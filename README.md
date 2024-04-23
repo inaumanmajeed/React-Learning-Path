@@ -10,13 +10,6 @@ Welcome to my React-Learning Path repository! Here, I am documenting my journey 
 - Pull Requests: [![Open PRs](https://img.shields.io/github/issues-pr-raw/inaumanmajeed/React-Learning-Path)](https://github.com/inaumanmajeed/React-Learning-Path/pulls)
 - License: [![License](https://img.shields.io/github/license/inaumanmajeed/React-Learning-Path)](LICENSE)
 
-## Visuals
-Here are some visuals from my React learning journey:
-
-- ![Screenshot 1](screenshots/screenshot1.png)
-- ![Screenshot 2](screenshots/screenshot2.png)
-- ![Screenshot 3](screenshots/screenshot3.png)
-
 ## Getting Started
 To get started with this project, follow these steps:
 
