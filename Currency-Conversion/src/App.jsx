@@ -3,8 +3,8 @@ import { InputBox } from "./components";
 import { useCurrencyInfo } from "./hooks/useCurrencyinfo";
 function App() {
   const [amount, setAmount] = useState(1);
-  const[from, setFrom] = useState("usd");
-  const[to, setTo] = useState("pkr");
+  const [from, setFrom] = useState("usd");
+  const [to, setTo] = useState("pkr");
   const [convertedAmount, setConvertedAmount] = useState(0);
 
   const CurrencyInfo = useCurrencyInfo(from);
@@ -36,13 +36,14 @@ function App() {
             }}
           >
             <div className="w-full mb-1">
-              <InputBox label="From"
-              amount={amount}
-              currencyOptions={options}
-              onCurrencyChange={(currency) => setAmount(currency)}
-              selectedCurrency={from}
-              onAmountChange={(amount) => setAmount(amount)}
-               />
+              <InputBox
+                label="From"
+                amount={amount}
+                currencyOptions={options}
+                onCurrencyChange={(currency) => setAmount(currency)}
+                selectedCurrency={from}
+                onAmountChange={(amount) => setAmount(amount)}
+              />
             </div>
             <div className="relative w-full h-0.5">
               <button
@@ -54,12 +55,14 @@ function App() {
               </button>
             </div>
             <div className="w-full mt-1 mb-4">
-              <InputBox label={"To"}
-              amount={convertedAmount}
-              currencyOptions={options}
-              onCurrencyChange={(currency) => setTo(currency)}
-              selectedCurrency={to}
-              amountDisabled />
+              <InputBox
+                label={"To"}
+                amount={convertedAmount}
+                currencyOptions={options}
+                onCurrencyChange={(currency) => setTo(currency)}
+                selectedCurrency={to}
+                amountDisabled
+              />
             </div>
             <button
               type="submit"
