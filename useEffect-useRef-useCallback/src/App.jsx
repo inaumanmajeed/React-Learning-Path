@@ -1,12 +1,14 @@
 import { useState, useCallback, useEffect, useRef } from "react";
-
+// component to generate password with length, number and special charachter options and copy to clipboard option with a button click.
 function App() {
+  // state to store password length and set password length with setlength function with default value 8. al numberAllowed and charachterAllowed are set to false by default.
   const [length, setlength] = useState(8);
   const [numberAllowed, setNumberAllowed] = useState(false);
   const [charachterAllowed, setCharachterAllowed] = useState(false);
   const [password, setPassword] = useState("");
 
-  const passwordRef = useRef(null);
+  
+  // useCallback to generate password with length, number and special charachter options.
   const PasswordGenerator = useCallback(() => {
     let pass = "";
     let str = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
@@ -18,10 +20,13 @@ function App() {
     }
     setPassword(pass);
   }, [length, numberAllowed, charachterAllowed, setPassword]);
+  // useEffect to call PasswordGenerator function when length, numberAllowed and charachterAllowed state changes.
   useEffect(() => {
     PasswordGenerator();
   }, [length, numberAllowed, charachterAllowed, PasswordGenerator]);
-
+  // useRef to store password input element reference.
+  const passwordRef = useRef(null);
+// function to copy password to clipboard.
   const copyPassToClip = useCallback(() => {
     passwordRef.current.select();
     passwordRef.current.setSelectionRange(0, 9999);
