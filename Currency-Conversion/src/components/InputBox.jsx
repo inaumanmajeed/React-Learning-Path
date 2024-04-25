@@ -9,7 +9,6 @@ function InputBox({
   selectedCurrency = "usd",
   amountDisabled = false,
   currencyDisabled = false,
-
   className = "",
 }) {
     const amountInputId = useId();
