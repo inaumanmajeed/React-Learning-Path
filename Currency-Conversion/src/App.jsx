@@ -1,15 +1,34 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { InputBox } from "./components";
 import { useCurrencyInfo } from "./hooks/useCurrencyinfo";
+
 function App() {
+  const defaultFromCurrency = "usd";
+  const defaultToCurrency = "pkr";
+
+  const [from, setFrom] = useState(() => {
+    const savedFromCurrency = localStorage.getItem("fromCurrency");
+    return savedFromCurrency ? savedFromCurrency : defaultFromCurrency;
+  });
+
+  const [to, setTo] = useState(() => {
+    const savedToCurrency = localStorage.getItem("toCurrency");
+    return savedToCurrency ? savedToCurrency : defaultToCurrency;
+  });
+
   const [amount, setAmount] = useState(1);
-  const [from, setFrom] = useState("usd");
-  const [to, setTo] = useState("pkr");
   const [convertedAmount, setConvertedAmount] = useState(0);
 
   const CurrencyInfo = useCurrencyInfo(from);
-
   const options = Object.keys(CurrencyInfo);
+
+  useEffect(() => {
+    localStorage.setItem("fromCurrency", from);
+  }, [from]);
+
+  useEffect(() => {
+    localStorage.setItem("toCurrency", to);
+  }, [to]);
 
   const swap = () => {
     setFrom(to);
@@ -17,9 +36,11 @@ function App() {
     setAmount(convertedAmount);
     setConvertedAmount(amount);
   };
+
   const convert = () => {
     setConvertedAmount(amount * CurrencyInfo[to]);
   };
+
   return (
     <div
       className="w-full h-screen flex flex-wrap justify-center items-center bg-cover bg-no-repeat"
