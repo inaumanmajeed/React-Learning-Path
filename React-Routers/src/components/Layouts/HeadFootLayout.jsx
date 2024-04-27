@@ -1,15 +1,15 @@
-import React from 'react'
-import Header from '../Header/Header'
-import Footer from '../Footer/Footer'
+import React from "react";
+import Header from "../Header/Header";
+import Footer from "../Footer/Footer";
 
-const HeadFootLayout = (props) => {
+const HeadFootLayout = ({ children }) => {
   return (
     <>
-    <Header />
-    {props.children}
-    <Footer />
+      <Header />
+      {children}
+      <Footer />
     </>
-  )
-}
+  );
+};
 
 export default HeadFootLayout;
