@@ -1,9 +1,10 @@
-
+import TodoCard from "./components/todo/TodoCard";
+import './app.css'
 
 function App() {
   return (
-    <div className="App">
-      <h1>Todo App</h1>
+    <div className="gradient-background">
+      <TodoCard />
     </div>
   );
 }
