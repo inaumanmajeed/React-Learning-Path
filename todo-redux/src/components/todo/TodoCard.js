@@ -18,7 +18,7 @@ const TodoCard = () => {
         </div>
         <div className="container__content">
           <AddTodo />
-          <h2 style={{textAlign: 'center'}}>TodoList</h2>
+          <h2>Memories</h2>
           <TodoList />
         </div>
       </div>

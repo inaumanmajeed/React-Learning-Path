@@ -1,28 +1,40 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addTodo } from "../../store/todo/TodoSlice";
 import "./styles.css";
 
 const AddTodo = () => {
   const [input, setInput] = React.useState("");
+  const [error, setError] = useState("");
   const dispatch = useDispatch();
 
   const addTodoHandler = (e) => {
     e.preventDefault();
+    if (!input.trim()) {
+      setError("Please enter a valid todo.");
+      return;
+    }
     dispatch(addTodo(input));
     setInput("");
+    setError("");
+  };
+  const handleChange = (e) => {
+    setInput(e.target.value);
+    setError("");
   };
 
   return (
-  
     <div className="input___main">
       <h2>Customize your Thoughts</h2>
       <form onSubmit={addTodoHandler} className="todo__add__main input__box">
         <input
-          className="todo__input__box"
+          className={`todo__input__box ${error ? "error" : ""}`}
           type="text"
           placeholder="Lemme listen your thoughts"
-          onChange={(e) => setInput(e.target.value)}
+          onChange={(e) => {
+            handleChange(e);
+            setInput(e.target.value);
+          }}
           value={input}
         />
         <span className="todo__button__box">
@@ -36,7 +48,7 @@ const AddTodo = () => {
           </svg>
         </span>
       </form>
-      </div>
+    </div>
   );
 };
 
