@@ -21,7 +21,7 @@ export class AuthService {
         name
       );
       if (userAccount) {
-        // logic for successful registration
+        // logic for successful registration_ it will automatically login the user after registration and return the user account details if successful registration.
         return this.login(email, password);
       } else {
         return userAccount;
